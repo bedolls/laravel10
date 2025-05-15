@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\http\Controller\dosenController;
+use App\http\Controller\mahasiswaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,9 +16,9 @@ use App\http\Controller\dosenController;
 |
 */
 
-// Route::get('/home', function () {
-//     return view('welcome');
-// });
+ Route::get('/home', function () {
+     return view('welcome');
+ });
 
 // Route::get('/cth', function () {
 //     return view('contoh');
@@ -71,7 +74,11 @@ use App\http\Controller\dosenController;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//Data Dosen
+Route::get('/mahasiswa', [mahasiswaController::class, 'index']);
+Route::get('/mahasiswa/tambah', [mahasiswaController::class, 'create']);
 
 //Data Dosen
 Route::get('/dosen', [dosenController::class, 'index']);
